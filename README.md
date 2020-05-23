@@ -1,6 +1,6 @@
 # Screen-to-World-K
 
-Screen to world coordinates conversion using perspective-n-points strategy with OpenCV4 solvePnP().
+Screen to world coordinates conversion (z=0) using perspective-n-points strategy with OpenCV4 solvePnP().
 
 ## Usage
 
