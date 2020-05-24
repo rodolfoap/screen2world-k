@@ -23,7 +23,7 @@ public:
 		static bool active=false;
 		oimage.copyTo(image);
 		cv::Point3d point=s2w.getWorldCoords(x, y);
-		cv::String text=cv::format("Coords: [%.6f, %.6f, %.6f]", point.x, point.y, point.z);
+		cv::String text=cv::format("[%d, %d]>[%.6f, %.6f, %.6f]", x, y, point.x, point.y, point.z);
 		cv::rectangle(image, cv::Point(0, 0), cv::Point(900, 60), cv::Scalar(0, 0, 0), -1, 8, 1);
     		cv::putText(	image, text, cv::Point(20, 20),
 				cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cv::Scalar(0, 255, 0), 1, cv::LINE_AA);

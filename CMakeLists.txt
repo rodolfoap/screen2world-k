@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(app)
+project(screen2world)
 
 # Force C++17
 set(CMAKE_CXX_STANDARD 17)
@@ -17,9 +17,9 @@ set(CMAKE_C_FLAGS "-g")
 find_package(OpenCV REQUIRED)
 include_directories(${OpenCV_INCLUDE_DIRS})
 
-add_executable(app app.cpp screen2worldK.cpp)
-target_compile_definitions(app PRIVATE DEBUG=false)
-target_link_libraries(app ${OpenCV_LIBS} stdc++fs)
+add_executable(locator locator.cpp screen2worldK.cpp)
+target_compile_definitions(locator PRIVATE DEBUG=false)
+target_link_libraries(locator ${OpenCV_LIBS} stdc++fs)
 
 add_executable(simple simple.cpp screen2worldK.cpp)
 target_compile_definitions(simple PRIVATE DEBUG=false)

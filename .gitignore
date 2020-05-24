@@ -38,5 +38,5 @@
 # Local
 build/
 *.cpp.tu*
-app
 simple
+locator
