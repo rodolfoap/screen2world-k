@@ -1,6 +1,7 @@
 BINARY=app
 execute(){
-	./${BINARY} test/camera_matrix_1280x720.yaml test/points_matrix.yaml
+	./simple test/camera_matrix_1280x720.yaml test/points_matrix.yaml
+	./${BINARY} test/placewilson.jpg
 	echo 'Expect: (500, 482) > [43.605129, 1.447795, 0.00]'
 }
 build(){

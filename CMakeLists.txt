@@ -18,6 +18,8 @@ find_package(OpenCV REQUIRED)
 
 add_executable(app app.cpp screen2worldK.cpp)
 target_compile_definitions(app PRIVATE DEBUG=false)
+add_executable(simple simple.cpp screen2worldK.cpp)
+target_compile_definitions(simple PRIVATE DEBUG=false)
 
 include_directories(${OpenCV_INCLUDE_DIRS})
 target_link_libraries(app ${OpenCV_LIBS} stdc++fs)

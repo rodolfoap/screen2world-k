@@ -9,6 +9,5 @@ int main(int argc, char** args) {
 	Screen2World s2w(args[1], args[2]);
 	cv::Point3d point=s2w.getWorldCoords(500.0, 482.0);
 	std::cerr<<"Result: (500, 428) > "<<point<<std::endl;
-	cv::Mat image=cv::imread(" ", cv::IMREAD_COLOR);
 	return 0;
 }
