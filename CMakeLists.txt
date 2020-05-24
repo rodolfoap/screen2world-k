@@ -16,7 +16,7 @@ set(CMAKE_C_FLAGS "-g")
 # OPENCV ####################################
 find_package(OpenCV REQUIRED)
 
-add_executable(app app.cpp)
+add_executable(app app.cpp screen2worldK.cpp)
 
 include_directories(${OpenCV_INCLUDE_DIRS})
 target_link_libraries(app ${OpenCV_LIBS} stdc++fs)

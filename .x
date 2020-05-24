@@ -19,7 +19,7 @@ case "$1" in
 		build
 	;;
 	e)
-		vi -p app.cpp CMakeLists.txt
+		vi -p app.cpp screen2worldK.cpp screen2worldK.h CMakeLists.txt
 		rm -f ${BINARY}
 		build;
 		execute;
