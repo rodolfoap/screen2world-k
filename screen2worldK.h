@@ -23,6 +23,10 @@ public:
 	// and a set of world-screen point correspondences.
 	Screen2World(char* rtMatrix);
 
+	// Does the same, in two steps
+	Screen2World(){ }
+	void init(char* camMatrix, char* correspondences);
+
 	// The conversion method
 	cv::Point3d getWorldCoords(double u, double v);
 };

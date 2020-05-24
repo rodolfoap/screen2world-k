@@ -1,8 +1,10 @@
 BINARY=app
 execute(){
-	./simple test/camera_matrix_1280x720.yaml test/points_matrix.yaml
-	./${BINARY} test/placewilson.jpg
-	echo 'Expect: (500, 482) > [43.605129, 1.447795, 0.00]'
+#	./simple test/camera_matrix_1280x720.yaml test/points_matrix.yaml
+#	echo 'Expect: (500, 482) > [43.605129, 1.447795, 0.00]'
+
+	./${BINARY} test/camera_matrix_1280x720.yaml test/points_matrix.yaml test/placewilson.jpg
+
 }
 build(){
 	mkdir -p build;

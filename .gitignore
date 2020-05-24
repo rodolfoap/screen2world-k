@@ -39,3 +39,4 @@
 build/
 *.cpp.tu*
 app
+simple

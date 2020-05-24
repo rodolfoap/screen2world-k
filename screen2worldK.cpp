@@ -8,6 +8,11 @@
 // will calculate the rotation and translation vectors. See the
 // other constructor, which can directly load the matrix.
 Screen2World::Screen2World(char* camMatrix, char* correspondences) {
+	init(camMatrix, correspondences);
+}
+
+// Implements the initialization
+void Screen2World::init(char* camMatrix, char* correspondences){
 	// Get K and dC. To generate it, use
 	// https://github.com/rodolfoap/cameracalibration
 	fs.open(camMatrix, cv::FileStorage::READ);
