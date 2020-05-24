@@ -42,6 +42,14 @@ public:
 
 		// Camera position is calculated with this:
 		pos=-R.t()*tvec;
+
+		// Generate yaml file
+		fs.open("rotation_translation_matrix.yaml", cv::FileStorage::WRITE);
+		fs<<"rotation_matrix"<<R;
+		fs<<"rotation_vector"<<rvec;
+		fs<<"translation_vector"<<tvec;
+		fs<<"camera_position"<<pos;
+		fs.release();
 	}
 
 	cv::Point3d getWorldCoords(double u, double v){
