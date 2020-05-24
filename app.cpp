@@ -57,7 +57,7 @@ public:
 		fs.release();
 	}
 
-	// This alternative constructor will simply liad the rotation
+	// This alternative constructor will simply load the rotation
 	// and translation vectors. See the other constructor, which
 	// will perform the full calculation by loading the camera matrix
 	// and a set of world-screen point correspondences.
