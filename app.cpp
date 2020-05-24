@@ -12,6 +12,10 @@ private:
 	cv::Mat_<cv::Point3d> worldpts;
 	cv::Mat rvec, tvec, R, pos;
 public:
+	// In order to instantiate the converter, the camera_matrix
+	// and the points correspondences can be used. This constructor
+	// will calculate the rotation and translation vectors. See the
+	// other constructor, which can directly load the matrix.
 	Screen2World(char* camMatrix, char* correspondences) {
 		// Get K and dC. To generate it, use
 		// https://github.com/rodolfoap/cameracalibration
@@ -42,6 +46,7 @@ public:
 
 		// Camera position is calculated with this:
 		pos=-R.t()*tvec;
+		std::cerr<<std::endl<<"CPos:"<<std::endl<<pos<<std::endl<<std::endl;
 
 		// Generate yaml file
 		fs.open("rotation_translation_matrix.yaml", cv::FileStorage::WRITE);
@@ -49,6 +54,25 @@ public:
 		fs<<"rotation_vector"<<rvec;
 		fs<<"translation_vector"<<tvec;
 		fs<<"camera_position"<<pos;
+		fs.release();
+	}
+
+	// This alternative constructor will simply liad the rotation
+	// and translation vectors. See the other constructor, which
+	// will perform the full calculation by loading the camera matrix
+	// and a set of world-screen point correspondences.
+	Screen2World(char* rtMatrix) {
+		// Get K and dC. To generate it, use
+		// https://github.com/rodolfoap/cameracalibration
+		fs.open(rtMatrix, cv::FileStorage::READ);
+		fs["rotation_matrix"] >> R;
+		fs["rotation_vector"] >> rvec;
+		fs["translation_vector"] >> tvec;
+		fs["camera_position"] >> pos;
+		std::cerr<<std::endl<<"RVec:"<<std::endl<<rvec<<std::endl;
+		std::cerr<<std::endl<<"RMat:"<<std::endl<<R<<std::endl;
+		std::cerr<<std::endl<<"TVec:"<<std::endl<<tvec<<std::endl<<std::endl;
+		std::cerr<<std::endl<<"CPos:"<<std::endl<<pos<<std::endl<<std::endl;
 		fs.release();
 	}
 
@@ -84,7 +108,6 @@ public:
 		cv::Mat XYZ0=s * invR_invK_uv1 - invR_tvec;
 
 		// Print camera attributes
-		std::cerr<<"Camera Position:"<<std::endl<<pos<<std::endl<<std::endl;
 		std::cerr<<"Camera Coordinates:"<<std::endl<<uv1<<std::endl<<std::endl;
 
 		// Show transformation
