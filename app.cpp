@@ -12,9 +12,8 @@ public:
 	Scene(char* cam, char* points, char* imgfile) {
 		s2w.init(cam, points);
 		oimage=cv::imread(imgfile, cv::IMREAD_COLOR);
-		oimage.copyTo(image);
 		cv::namedWindow("Image", cv::WINDOW_AUTOSIZE);
-		cv::imshow("Image", image);
+		cv::imshow("Image", oimage);
 		cv::setMouseCallback("Image", onMouse);
 		cv::waitKey();
 	}
@@ -24,20 +23,11 @@ public:
 		static bool active=false;
 		oimage.copyTo(image);
 		cv::Point3d point=s2w.getWorldCoords(x, y);
-    		cv::putText(	image, "Hello", cv::Point(10, 10),
-				cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cv::Scalar(0,200,250), 1, cv::LINE_AA);
-
-		// See enum cv::MouseEventTypes
-		if(event==cv::EVENT_LBUTTONDOWN) active=true;
-		if(event==cv::EVENT_LBUTTONUP  ) active=false;
-		if(active) {
-			std::cerr<<"("<<x<<":"<<y<<")>"<<point<<std::endl;
-			pnew=cv::Point(x, y);
-			if(pold.x>0&&pold.y>0)  cv::line(image, pold, pnew, cv::Scalar(0, 255, 0), 1);
-			else                    cv::line(image, pnew, pnew, cv::Scalar(0, 0, 255), 2);
-			cv::imshow("Image", image);
-			pold=pnew;
-		}
+		cv::String text=cv::format("Coords: [%.6f, %.6f, %.6f]", point.x, point.y, point.z);
+		cv::rectangle(image, cv::Point(0, 0), cv::Point(900, 60), cv::Scalar(0, 0, 0), -1, 8, 1);
+    		cv::putText(	image, text, cv::Point(20, 20),
+				cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cv::Scalar(0, 255, 0), 1, cv::LINE_AA);
+		cv::imshow("Image", image);
 
 	}
 };
