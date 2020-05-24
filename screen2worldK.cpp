@@ -2,7 +2,6 @@
 #include <vector>
 #include <opencv2/opencv.hpp>
 #include "screen2worldK.h"
-#define DEBUG true
 
 // In order to instantiate the converter, the camera_matrix
 // and the points correspondences can be used. This constructor
