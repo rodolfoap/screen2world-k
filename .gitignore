@@ -38,5 +38,5 @@
 # Local
 build/
 *.cpp.tu*
-simple
+gen-extrinsic
 locator
