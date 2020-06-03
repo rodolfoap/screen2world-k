@@ -1,6 +1,10 @@
 # Screen-to-World-K
 
-Screen to world coordinates conversion (z=0) using perspective-n-points strategy with OpenCV4 solvePnP().
+Screen to world coordinates conversion (z=0) using perspective-n-points strategy with OpenCV4 solvePnP(). To find screen-to-world correspondences (which point in the space in the camera image corresponds to a point in the screen), an _extrinsics matrix_ is required. See the full calculation here: https://github.com/rodolfoap/screen2world-k. In such example, the _extrinsics matrix_ is calculated using a set of world-to-screen point correspondences.
+
+* To find screen-to-world correspondences, another approach is proposed: See the full calculation here: https://github.com/rodolfoap/screen2world-d. In such example, the _extrinsics matrix_ is calculated by using a set of person detection boxes to calculate the distances to the camera. Knowing the camera bearing, world-to-screen points correspondences are automatically found, and the _extrinsics matrix_ is calculated in some steps.
+* The previous applications require an _intrinsics matrix_ (also called _calibration matrix_, _camera matrix_ or _K matrix_) which can be calculated using https://github.com/rodolfoap/cameracalibration.
+* To find screen-to-world correspondences in a simple manner, another approach is proposed: See the full calculation here: https://github.com/rodolfoap/screen2world-h. In such example, In such example, an _homography matrix_ is calculated just by using a set of world-to-screen point correspondences. Therefore, the _intrinsics_ matrix is not needed.
 
 ## Usage
 
